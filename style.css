@@ -1,0 +1,100 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  margin-inline: auto;
+}
+
+td {
+  border-bottom: 1px solid white;
+  text-align: center;
+}
+
+#searchInput {
+  border: 1px solid grey;
+  background-color: black;
+  width: 30%;
+  padding: 10px;
+  font-size: 15px;
+  margin: 15px 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+input[type="text"]:hover {
+  box-shadow: 0 0 5pt 0.5pt #204e93bf;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 5pt 2pt #204e93bf;
+  outline-width: 0px;
+}
+
+button {
+  border: 1px solid grey;
+  background-color: black;
+  padding: 10px;
+  margin: 15px 25px;
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  box-shadow: 0 0 2px 3px #3d3e3ebf;
+}
+
+button:active {
+  background-color: rgba(163, 176, 164, 0.626);
+  box-shadow: 0 0 5pt 0.5pt #204e93bf;
+}
+#nullPincode {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+td {
+  min-width: 110px;
+  padding: 10px;
+}
+
+#SearchFilter {
+        display: flex;
+        border: 1px solid grey;
+        background-color: black;
+        width: 25%;
+        padding: 7px;
+        height: 14px;
+        font-size: 15px;
+        color: white;
+        border-radius: 5px;
+        visibility: hidden;
+        justify-content: center;
+        position: relative;
+        left: 32%;
+        bottom: 40px;
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    #SearchFilter {
+        width: 70%;
+        padding: 8px;
+        height: 14px;
+        font-size: 15px;
+        position: relative;
+        left: 9%;
+}
+    #searchInput {
+        width: 40%;
+        padding: 8px;  
+    }   
+
+    button {
+        padding: 5px;
+      }
+}
