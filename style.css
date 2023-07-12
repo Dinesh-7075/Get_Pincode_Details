@@ -98,3 +98,15 @@ td {
         padding: 5px;
       }
 }
+
+@media (max-width: 900px) and (min-width: 700px) {
+  table {
+      width: 50%;
+  }
+}
+
+@media (max-width: 700px) {
+  table{
+      width: 60%;
+  }
+}
