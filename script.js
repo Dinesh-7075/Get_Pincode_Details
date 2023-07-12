@@ -70,3 +70,5 @@ searchInput.addEventListener("keyup", () => {
   ];
   renderTable(newData);
 })
+
+/* Coded by DineshReddy */
