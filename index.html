@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" />
-    <title>Postal code Details</title>
-</head>
+<body onload="myFunction()" style="background-color: black;">
+  <center>
+    <h1 id="refreshMsg" style="color: cyan;">Refresh the Page to fetch Postal Details</h1>
+  </center>
 
-<body>
-    <div class="cont">
-        <form onsubmit="return false;">
-            <input type="text" id="searchInput" placeholder="Enter your Pincode here...">
-            <button id="Get Details" type="submit" onclick="fetchPincodeDetails()">Get Details</button>
-        </form>
-        <h2 id="nullPincode"></h2>
-        <input type="text" id="SearchFilter" placeholder="Search by Post Office Name...">
-        <table>
-            <thead style="color:cyan;font-size: 18px;font-weight: bold;">
-                <td>PostOfficeName</td>
-                <td>District</td>
-                <td>State</td>
-                <td>Country</td>
-                <td>Branch Type</td>
-                <td>Pincode</td>
-            </thead>
-            <tbody id="tableBody">
-                <!-- Table Rows will be added here by JS -->
-            </tbody>
-        </table>
-    </div>
+  <script>
+    function myFunction() {
+      var fetchBy = prompt(
+        "Enter  \"1\"  --> fetch Postal Data by pincode\nEnter  \"2\"  --> fetch Postal Data by Post Office Branch Name"
+      );
+      fetchBy = fetchBy.toLowerCase().trim();
+      if (fetchBy == 1) {
+        var win = window.open("searchByPincode.html");
+      }
+      else if (fetchBy == 2) {
+        var win = window.open("searchByPostOfficeBranchName.html");
+      }
+      else {
+        let h1Msg = document.getElementById("refreshMsg");
+        h1Msg.style.visibility = "hidden";
+        const h1 = document.createElement("h1");
+        h1.style.textAlign = "center";
+        h1.style.backgroundColor = "black";
+        h1.style.color = "cyan";
+        h1.innerText = "Refresh the Page to fetch Postal Details \nEnter: 1 --- fetch Postal Data by pincode\nEnter: 2  --- fetch Postal Data by postOfficeBranchName"
+        document.body.appendChild(h1);
+      }
 
-    <script src="./script.js"></script>
+    }
+  </script>
+
 </body>
 
 </html>

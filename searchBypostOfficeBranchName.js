@@ -1,34 +1,35 @@
-let postalCodeData = [];
+let postalCodeDataByName = [];
 
 async function fetchPincodeDetails() {
-  let pincode;
+  let postOfficeBranchName;
   function userInput() {
-    pincode = document.getElementById("searchInput").value.trim();
+    postOfficeBranchName = document.getElementById("searchInput").value.trim();
   }
   userInput();
-  //   console.log(pincode);
+  //   console.log(postOfficeBranchName);
 
-  let endpoint = `https://api.postalpincode.in/pincode/${pincode}`;
+  let endpoint = `https://api.postalpincode.in/postoffice/${postOfficeBranchName}`;
 
-  if (pincode != null) {
+  if (postOfficeBranchName != null) {
     const nullPincode = document.getElementById("nullPincode");
     const SearchFilter = document.getElementById("SearchFilter");
     try {
       const response = await fetch(endpoint, { method: "GET" });
-      postalCodeData = await response.json();
-      console.log(`Postal data fetched for ${pincode}`);
-      console.log(postalCodeData);
-      renderTable(postalCodeData);
+      postalCodeDataByName = await response.json();
+      console.log(`Postal data fetched for ${postOfficeBranchName}`);
+      console.log(postalCodeDataByName);
+      renderTable(postalCodeDataByName);
       nullPincode.style.visibility = "hidden";
       SearchFilter.style.visibility = "visible";
-    } catch {
+    }
+    catch {
       nullPincode.style.visibility = "visible";
       SearchFilter.style.visibility = "hidden";
-      nullPincode.innerHTML = "Please enter your Six digit Postal code......";
+      nullPincode.innerHTML = "Please enter correct Post Office Branch Name......";
     }
   }
 }
-
+ 
 function renderTable(data) {
   console.log(data, "display function called");
   const tableBody = document.getElementById("tableBody");
@@ -51,15 +52,15 @@ function renderTable(data) {
 }
 
 //search function
-const searchInput = document.getElementById("SearchFilter");
-searchInput.addEventListener("keyup", () => {
-  const searchTerm = searchInput.value.toLowerCase();
+const searchInputByName = document.getElementById("SearchFilter");
+searchInputByName.addEventListener("keyup", () => {
+  const searchTerm = searchInputByName.value.toLowerCase();
   if (searchTerm == "") {
-    renderTable(postalCodeData);
+    renderTable(postalCodeDataByName);
     return;
   }
-  console.log(postalCodeData, "hello");
-  const filteredStudents = postalCodeData[0].PostOffice.filter(function (item) {
+  console.log(postalCodeDataByName, "hello");
+  const filteredStudents = postalCodeDataByName[0].PostOffice.filter(function (item) {
     return item.Name.toLowerCase().includes(searchTerm);
   });
   console.log(filteredStudents);
